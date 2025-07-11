@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.sqlite3
+*.mp4
+
+venv/
+.env
+.DS_Store
+pv/
+del/
+downloads/
+.venv/
+chrome_profile_temp/
+client_secret.json

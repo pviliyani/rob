@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>داشبورد مدیریت ویدیو</title>
+</head>
+<body>
+<h1>🎥 داشبورد مدیریت ویدیو</h1>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<form action="{{ url_for('download_from_telegram') }}" method="post">
+    <button type="submit">🎥 دانلود از تلگرام</button>
+</form>
+<br>
+{#<form action="{{ url_for('upload_all') }}" method="post">#}
+{#    <button type="submit">🚀 واترمارک همه و آماده‌سازی آپلود</button>#}
+{#</form>#}
+<form action="{{ url_for('upload_all_aparat') }}" method="post">
+    <button type="submit">اپلود در آپارات</button>
+</form>
+<br>
+<form action="{{ url_for('upload_all_youtube') }}" method="post">
+    <button type="submit">اپلود در یوتیوب</button>
+</form>
+<br>
+<h2>📺 کانال‌ها</h2>
+<form method="POST" action="/add_channel">
+    <input type="text" name="username" placeholder="@channel_username" required>
+    <button type="submit">افزودن کانال</button>
+</form>
+<ul>
+    {% for ch in channels %}
+        <li>{{ ch[1] }} (آخرین پیام چک‌شده: {{ ch[3] }})</li>
+        <a href="/delete_channel/{{ ch[0] }}" onclick="return confirm('حذف شود؟')">🗑️</a>
+    {% endfor %}
+</ul>
+
+<br>
+<h2>🎬 ویدیوها</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>کانال</th>
+        <th>فایل</th>
+        <th>واترمارک</th>
+        <th>آپارات</th>
+        <th>یوتیوب</th>
+        <th>تیتر و توضیحات</th>
+        <th>🗑️</th>
+    </tr>
+    {% for v in videos %}
+        <tr>
+            <td>{{ v[0] }}</td>
+            <td>{{ v[2] }}</td>
+            <td><a target="_blank" href="{{ url_for('download_file', filename=v[4].split('/')[-1]) }}">{{ v[4] }}</a></td>
+            <td>{{ "✅" if v[7] else "❌" }}</td>
+            <td>{{ "✅" if v[8] else "❌" }}</td>
+            <td>{{ "✅" if v[10] else "❌" }}</td>
+            <td><a href="{{ url_for('edit_video', video_id=v[0]) }}">ویرایش</a></td>
+            <td><a href="/delete_video/{{ v[0] }}" onclick="return confirm('این ویدیو حذف شود؟')">🗑️</a></td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8" />
+    <title>ویرایش ویدیو</title>
+</head>
+<body>
+    <h1>ویرایش ویدیو {{ video[0] }}</h1> <!-- فرضا video[0] id هست -->
+    <form method="post">
+        <label>عنوان:</label><br>
+        <input type="text" name="title" value="{{ video[11] }}" /><br><br> <!-- فرضا ستون title شماره 11 هست -->
+
+        <label>توضیح:</label><br>
+        <textarea name="description" cols="100" rows="20">{% if video[12] %}
+            {{ video[12] }}
+        {% else %}
+             آدرس سایت
+https://mihanghab.com/
+
+ثبت سفارش از طریق سایت و یا دایرکت
+
+📩Tell
+
+📞:09926277355
+
+📞:02177525602
+
+
+🛫 ارسال به تمام استانها
+
+تهران پیک : ساعت 14 الی 18
+
+استان‌های دیگر پست و یا تیپاکس
+        {% endif %} </textarea><br><br> <!-- ستون description شماره 12 -->
+
+        <button type="submit">ذخیره</button>
+    </form>
+    <a href="{{ url_for('dashboard') }}">بازگشت</a>
+</body>
+</html>

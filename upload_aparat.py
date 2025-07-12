@@ -74,8 +74,9 @@ def upload_to_aparat(video_id):
                 print("Upload response:", response_json)
                 database.update_aparat_status(video_id, video_url)
             except Exception as e:
-                print("خطا در تبدیل پاسخ به JSON:", e)
-                print("متن پاسخ:", resp.data.decode('utf-8'))
+                # print("خطا در تبدیل پاسخ به JSON:", e)
+                # print("متن پاسخ:", resp.data.decode('utf-8'))
+                return 'error'
 
     else:
         print("ویدیو با این شناسه پیدا نشد.")

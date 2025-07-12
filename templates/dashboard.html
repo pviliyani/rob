@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>داشبورد مدیریت ویدیو</title>
+    <style>
+        .no-title{
+            background: #ffdbdb;
+        }
+    </style>
 </head>
+
 <body>
 <h1>🎥 داشبورد مدیریت ویدیو</h1>
 
@@ -58,7 +64,7 @@
         <th>🗑️</th>
     </tr>
     {% for v in videos %}
-        <tr>
+        <tr {% if v[15] == '' %}class="no-title"{% endif %}>
             <td>{{ v[0] }}</td>
             <td>{{ v[2] }}</td>
             <td><a target="_blank" href="{{ url_for('download_file', filename=v[4].split('/')[-1]) }}">{{ v[4] }}</a></td>

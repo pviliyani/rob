@@ -18,7 +18,7 @@ def download_file(filename):
 @app.route("/")
 def dashboard():
     channels = database.get_channels()
-    videos = database.get_all_videos()
+    videos = database.get_all_videos_dash()
     return render_template("dashboard.html", channels=channels, videos=videos)
 
 @app.route("/download", methods=["POST"])
@@ -33,7 +33,10 @@ def upload_all_aparat():
     for video in videos:
         # if video[7]:
         video_id= video[0]
-        upload_aparat.upload_to_aparat(video_id)
+        res=upload_aparat.upload_to_aparat(video_id)
+        if res=='error':
+            flash("خطایی رخ داده است")
+            break
         time.sleep(5)
     flash("🚀 همه ویدیوها در اپارات اپلود شدند")
     return redirect(url_for("dashboard"))

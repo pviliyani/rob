@@ -8,13 +8,11 @@
     <h1>ویرایش ویدیو {{ video[0] }}</h1> <!-- فرضا video[0] id هست -->
     <form method="post">
         <label>عنوان:</label><br>
-        <input type="text" name="title" value="{{ video[11] }}" /><br><br> <!-- فرضا ستون title شماره 11 هست -->
+        <input style="width: 400px;text-align: right;direction: rtl" type="text" name="title" value="{{ video[14] }}" /><br><br> <!-- فرضا ستون title شماره 11 هست -->
 
         <label>توضیح:</label><br>
-        <textarea name="description" cols="100" rows="20">{% if video[12] %}
-            {{ video[12] }}
-        {% else %}
-             آدرس سایت
+        <textarea style="text-align: right;direction: rtl" name="description" cols="100" rows="20">{% if video[15] %}{{ video[15] }}{% else %}
+آدرس سایت
 https://mihanghab.com/
 
 ثبت سفارش از طریق سایت و یا دایرکت

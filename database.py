@@ -82,6 +82,11 @@ def get_all_videos():
         c = conn.cursor()
         c.execute('SELECT * FROM videos')
         return c.fetchall()
+def get_all_videos_dash():
+    with get_connection() as conn:
+        c = conn.cursor()
+        c.execute('SELECT * FROM videos order by ID DESC, title ASC')
+        return c.fetchall()
 
 def delete_channel(channel_id):
     with get_connection() as conn:

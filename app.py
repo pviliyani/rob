@@ -31,10 +31,10 @@ def download_from_telegram():
 def upload_all_aparat():
     videos = database.get_no_upload_aparat_video()
     for video in videos:
-        if video[7]:
-            video_id= video[0]
-            upload_aparat.upload_to_aparat(video_id)
-            time.sleep(5)
+        # if video[7]:
+        video_id= video[0]
+        upload_aparat.upload_to_aparat(video_id)
+        time.sleep(5)
     flash("🚀 همه ویدیوها در اپارات اپلود شدند")
     return redirect(url_for("dashboard"))
 
@@ -42,13 +42,13 @@ def upload_all_aparat():
 def upload_all_youtube():
     videos = database.get_no_upload_youtube_video()
     for video in videos:
-        if video[7]:
-            video_file = video[4]
-            title = video[14]
-            description = video[15]
-            video_id = video[0]
-            upload_to_youtube.upload_video(video_id, video_file, title, description)
-            time.sleep(5)
+        # if video[7]:
+        video_file = video[4]
+        title = video[14]
+        description = video[15]
+        video_id = video[0]
+        upload_to_youtube.upload_video(video_id, video_file, title, description)
+        time.sleep(5)
     flash("🚀 همه ویدیوها در یوتیوب اپلود شدند")
     return redirect(url_for("dashboard"))
 

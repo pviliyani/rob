@@ -43,7 +43,7 @@ def upload_to_aparat(video_id):
             'data[tags]': "قاب گوشی-قاب گوشی آیفون-قاب موبایل",
             'data[comment]': "yes",
             'data[descr]': description,
-            'data[video_pass]': 'false',
+            'data[video_pass]': 0,
         }
 
         # خواندن داده فایل

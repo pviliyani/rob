@@ -12,3 +12,4 @@ downloads/
 .venv/
 chrome_profile_temp/
 client_secret.json
+token.pickle

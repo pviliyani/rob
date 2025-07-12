@@ -85,7 +85,7 @@ def get_all_videos():
 def get_all_videos_dash():
     with get_connection() as conn:
         c = conn.cursor()
-        c.execute('SELECT * FROM videos order by ID DESC, title ASC')
+        c.execute('SELECT * FROM videos where (uploaded_aparat < 1 or uploaded_youtube < 1)  order by ID DESC, title ASC')
         return c.fetchall()
 
 def delete_channel(channel_id):
@@ -109,13 +109,13 @@ def update_watermarked_path(video_id, watermarked_path):
 def get_no_upload_aparat_video():
     with get_connection() as conn:
         c = conn.cursor()
-        c.execute('SELECT * FROM videos WHERE uploaded_aparat < 1')
+        c.execute('SELECT * FROM videos WHERE uploaded_aparat < 1 limit 18')
         return c.fetchall()
 
 def get_no_upload_youtube_video():
     with get_connection() as conn:
         c = conn.cursor()
-        c.execute('SELECT * FROM videos WHERE uploaded_youtube < 1')
+        c.execute('SELECT * FROM videos WHERE uploaded_youtube < 1 limit 5')
         return c.fetchall()
 
 def update_aparat_status(video_id, link):
